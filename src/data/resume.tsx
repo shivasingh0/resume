@@ -119,7 +119,7 @@ export const DATA = {
     {
       title: "Dental CRM",
       href: "https://panel.shribalajilaserdentalclinic.com",
-      // dates: "Jan 2024 - Feb 2024",
+      dates: "",
       active: true,
       description:
         "Dental CRM is a user-friendly software designed to streamline patient management for dental practices, enhancing patient care and operational efficiency.",
@@ -145,7 +145,7 @@ export const DATA = {
     {
       title: "Hello Educators",
       href: "https://www.helloeducators.in/",
-      // dates: "June 2023 - Present",
+      dates: "",
       active: true,
       description:
         "Hello Educators is a leading digital educational platform that offers the best-quality lectures at home from India’s best teachers, lecturers, professors, experienced professional educators, and relevant postgraduates, i.e., mathematicians, engineers, scientists, and doctors.",
@@ -175,7 +175,7 @@ export const DATA = {
     {
       title: "e-Learning Management System",
       href: "https://lms.mindcoders.in/",
-      // dates: "April 2023 - September 2023",
+      dates: "",
       active: true,
       description:
         "LMS (Learning Management System) Portal is a comprehensive, user-friendly e-learning platform to enhance online education and training experiences.",
@@ -206,7 +206,7 @@ export const DATA = {
     {
       title: "Mindcoders Website",
       href: "https://mindcoders.in",
-      // dates: "April 2023 - March 2024",
+      dates: "",
       active: true,
       description:
         "Mind Coders is a One Stop for all IT Training Needs! They provide the best training with industry expert trainers.",
