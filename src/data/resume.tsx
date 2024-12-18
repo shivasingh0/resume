@@ -16,6 +16,7 @@ export const DATA = {
     "React",
     "Next.js",
     "Javascript",
+    "Typescript",
     "Node.js",
     "Express",
     "MongoDB",
@@ -142,36 +143,7 @@ export const DATA = {
       video:
         "",
     },
-    {
-      title: "Hello Educators",
-      href: "https://www.helloeducators.in/",
-      dates: "",
-      active: true,
-      description:
-        "Hello Educators is a leading digital educational platform that offers the best-quality lectures at home from India’s best teachers, lecturers, professors, experienced professional educators, and relevant postgraduates, i.e., mathematicians, engineers, scientists, and doctors.",
-      technologies: [
-        "React.js",
-        "TailwindCSS",
-        "Redux",
-        "MySQL",
-        "Node.js",
-        "Express.js",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.helloeducators.in/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        // {
-        //   type: "Source",
-        //   href: "https://github.com/magicuidesign/magicui",
-        //   icon: <Icons.github className="size-3" />,
-        // },
-      ],
-      image: "/educator.png",
-      video: "",
-    },
+    
     {
       title: "e-Learning Management System",
       href: "https://lms.mindcoders.in/",
@@ -204,7 +176,37 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Mindcoders Website",
+      title: "Hello Educators",
+      href: "https://www.helloeducators.in/",
+      dates: "",
+      active: true,
+      description:
+        "Hello Educators is a leading digital educational platform that offers the best-quality lectures at home from India’s best teachers, lecturers, professors, experienced professional educators, and relevant postgraduates, i.e., mathematicians, engineers, scientists, and doctors.",
+      technologies: [
+        "React.js",
+        "TailwindCSS",
+        "Redux",
+        "MySQL",
+        "Node.js",
+        "Express.js",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.helloeducators.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        // {
+        //   type: "Source",
+        //   href: "https://github.com/magicuidesign/magicui",
+        //   icon: <Icons.github className="size-3" />,
+        // },
+      ],
+      image: "/Mockup-HelloEducator.jpg",
+      video: "",
+    },
+    {
+      title: "Mindcoders",
       href: "https://mindcoders.in",
       dates: "",
       active: true,
@@ -214,6 +216,11 @@ export const DATA = {
         "React.js",
         "TailwindCSS",
         "Magic UI",
+        "Next.js",
+        "RazorPay",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
       ],
       links: [
         {
@@ -222,7 +229,148 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/mindcodersss.png",
+      image: "/mindcoders.png",
+      video:
+        "",
+    },
+    {
+      title: "Resonance Indore",
+      href: "https://resonanceindore.com/",
+      dates: "",
+      active: true,
+      description:
+        "Provided expert guidance and personalized attention to students at Resonance Indore, focusing on IIT JEE/NEET preparation.",
+      technologies: [
+        "React.js",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://resonanceindore.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Mockup-Resonance.jpg",
+      video:
+        "",
+    },
+    {
+      title: "Muhurat Investing",
+      href: "https://www.muhuratinvesting.com/",
+      dates: "",
+      active: true,
+      description:
+        "Muhurat Investing Investment Advisor – Your Trusted Partner in Financial Success.",
+      technologies: [
+        "React.js",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.muhuratinvesting.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Mockup-MuhuratInvesting.jpg",
+      video:
+        "",
+    },
+    {
+      title: "Mindbulls",
+      href: "https://mindbulls.com/",
+      dates: "",
+      active: true,
+      description:
+        "Developed and delivered comprehensive financial trading education at Mindbulls Trading Institute, empowering individuals to earn high incomes by investing in the stock market since 2020.",
+      technologies: [
+        "React.js",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://mindbulls.com",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Mockup-Mindbulls.jpg",
+      video:
+        "",
+    },
+    {
+      title: "Fourpoints Holidays",
+      href: "https://fourpointsholidays.in/",
+      dates: "",
+      active: true,
+      description:
+        "Fourpoints Holidays is a professionally managed travel services company. They offer hotel booking services, car and coach rentals in all three divisions of the state of Jammu and Kashmir.",
+      technologies: [
+        "HTML/CSS",
+        "Bootstrap",
+        "Php",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://fourpointsholidays.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/fourpointsholidays.png",
+      video:
+        "",
+    },
+    {
+      title: "Researchinn",
+      href: "https://researchinn.com/",
+      dates: "",
+      active: true,
+      description:
+        "Contributed to a leading stock market tips agency by providing well-researched alerts and market recommendations, enabling clients to trade effortlessly and effectively.",
+      technologies: [
+        "HTML/CSS",
+        "Bootstrap",
+        "Php",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://researchinn.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/researchinn.png",
+      video:
+        "",
+    },
+    {
+      title: "Finoledge",
+      href: "https://www.finoledge.com/",
+      dates: "",
+      active: true,
+      description:
+        "Simplified financial market knowledge at Finoledge, India's most trusted financial education platform, empowering individuals to invest confidently with comprehensive 360-degree training.",
+      technologies: [
+        "HTML/CSS",
+        "Bootstrap",
+        "Php",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.finoledge.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Finoledge.png",
       video:
         "",
     },
