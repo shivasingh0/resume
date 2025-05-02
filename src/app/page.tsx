@@ -202,6 +202,7 @@ export default function Page() {
               <Link
                 download={true}
                 href="/ShivMangal_Resume.pdf"
+                target="_blank"
                 className="inline-block w-fit rounded-lg bg-foreground text-background px-3 py-2 text-sm"
               >
                 Download Resume
