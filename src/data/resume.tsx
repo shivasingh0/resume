@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Full-Stack Developer | React.js | Node.js | Next.js",
   summary:
-    "Passionate Full-Stack Developer with a Bachelor's in Technology and specialized training from Physics Wallah. Currently contributing to innovative projects at Mind Coders, I excel in React.js, Node.js, and Next.js. My strengths include problem-solving, quick adaptation to new technologies, and a commitment to continuous learning. With a track record of delivering impactful solutions, I'm eager to take on new challenges and contribute my skills to a dynamic team. Let's connect and explore how I can add value to your organization!",
+    "A results-driven Full Stack Developer with a Bachelor’s in Technology and hands-on expertise gained through professional experience and advanced training from Physics Wallah. Skilled in building scalable and high-performance web applications using React.js, Next.js, and Node.js. I thrive in fast-paced environments, quickly adapt to new technologies, and consistently deliver reliable, user-focused solutions. Passionate about continuous learning and innovation, I’m excited to contribute to modern products and collaborate with teams that value growth, creativity, and engineering excellence.",
   avatarUrl: "/myImg.jpg",
   skills: [
     "React.js",
