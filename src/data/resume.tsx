@@ -3,28 +3,30 @@ import { HomeIcon, NotebookIcon } from "lucide-react";``
 
 export const DATA = {
   name: "Shiv",
-  initials: "DV",
-  url: "https://dillion.io",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  initials: "S",
+  url: "https://shiv-resume.vercel.app",
+  location: "Indore, M.P. India",
+  locationLink: "https://maps.app.goo.gl/BzS6oHJd7NmYMWRm8",
   description:
-    "Full-Stack Developer | React.js | Node.js | Next.js | Open to New Opportunities | Passionate About Web Development",
+    "Full-Stack Developer | React.js | Node.js | Next.js",
   summary:
     "Passionate Full-Stack Developer with a Bachelor's in Technology and specialized training from Physics Wallah. Currently contributing to innovative projects at Mind Coders, I excel in React.js, Node.js, and Next.js. My strengths include problem-solving, quick adaptation to new technologies, and a commitment to continuous learning. With a track record of delivering impactful solutions, I'm eager to take on new challenges and contribute my skills to a dynamic team. Let's connect and explore how I can add value to your organization!",
-  avatarUrl: "/me.jpeg",
+  avatarUrl: "/myImg.jpg",
   skills: [
-    "React",
+    "React.js",
     "Next.js",
     "Javascript",
     "Typescript",
     "Node.js",
-    "Express",
+    "Nest.js",
+    "Express.js",
     "MongoDB",
+    "AWS",
+    "Docker",
     "HTML/CSS",
     "Tailwind",
     "Bootstrap",
     "Material UI",
-    "Chakra UI",
     "Git/Github",
     "Postman",
   ],
@@ -82,6 +84,18 @@ export const DATA = {
 
   work: [
     {
+      company: "WebiWork Technologies Pvt. Ltd.",
+      href: "https://webiwork.com/",
+      badges: [],
+      location: "Indore, M.P., India",
+      title: "Full Stack Developer",
+      logoUrl: "https://webiwork.com/wp-content/uploads/2022/11/cropped-webiwork_Logo-32x32.png",
+      start: "May 2025",
+      end: "Present",
+      description:
+        "Full Stack Developer at WebiWork Technologies, building and optimizing scalable web applications using Next.js, React.js, Node.js, Express.js, and Tailwind css improving load performance by 20%, reducing integration issues by  10%, and enhancing code quality and development speed through reusable components and efficient backend API architecture.",
+    },
+    {
       company: "Mindcoders",
       href: "https://www.mindcoders.in/",
       badges: [],
@@ -89,7 +103,7 @@ export const DATA = {
       title: "Software Developer",
       logoUrl: "https://www.mindcoders.in/assets/img/fevicon 01.webp",
       start: "October 2023",
-      end: "Present",
+      end: "April 2025",
       description:
         "Led frontend development initiatives for over five web applications, optimizing performance and usability, resulting in a 20% improvement in load times and user satisfaction. Developed responsive web UIs using HTML, CSS, JavaScript, React, and Tailwind, reducing design-to-development time by 15%. Collaborated with cross-functional teams, including both frontend and backend, to ensure seamless integration, which led to a 10% decrease in API-related issues. Implemented industry best practices and emerging technologies, enhancing overall code quality by 25%.",
     },
@@ -118,6 +132,62 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Maidway",
+      href: "https://new.maidway.com/",
+      dates: "",
+      active: true,
+      description:
+        `Developed an online cleaning service platform with role-based access for Admin, Provider, and
+Customer. Customers can book cleaning appointments based on service needs, while providers
+manage requests and schedules. Admin handles overall service operations and user management.`,
+      technologies: [
+        "Replit",
+        "React + Vite",
+        "TailwindCSS",
+        "PostgreSQL",
+        "Express.js",
+        "Node.js",
+        "Vapi"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://new.maidway.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/maidway.png",
+      video:
+        "",
+    },
+    {
+      title: "QReady",
+      href: "https://new.maidway.com/",
+      dates: "",
+      active: true,
+      description:
+        `Worked on a digital QR-enabled platform that replaces manual clipboard tracking with automated asset/room management for fire, hospitality, and facility departments. Reduced operational inefficiencies by enabling fast QR scans, real-time logging, and accurate reporting across industries.`,
+      technologies: [
+        "Next.js",
+        "Bootstrap",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Dockers",
+        "AWS"
+      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://myqready.com/",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
+      image: "/mqready.png",
+      video:
+        "",
+    },
+    {
       title: "Dental CRM",
       href: "https://panel.shribalajilaserdentalclinic.com",
       dates: "",
@@ -132,21 +202,51 @@ export const DATA = {
         "Express.js",
         "Node.js",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://panel.shribalajilaserdentalclinic.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://panel.shribalajilaserdentalclinic.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
       image: "/dental.png",
       video:
         "",
     },
-    
+    {
+      title: "E-Auction",
+      href: "https://e-lite.co.in/",
+      dates: "",
+      active: true,
+      description:
+        `A real-time bidding web application that delivers instant bid updates and automated auction management. The
+platform supports dedicated dashboards for Admin, Client, and Bidders, ensuring secure and transparent
+bidding experiences.`,
+      technologies: [
+        "React.js",
+        "TailwindCSS",
+        "Redux",
+        "MongoDB",
+        "Express.js",
+        "Node.js",
+        "Hostinger (VPS)",
+        "Socket.IO",
+        "Node-Cron"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://e-lite.co.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/elite.png",
+      video:
+        "",
+    },
     {
       title: "e-Learning Management System",
-      href: "https://lms.mindcoders.in/",
+      href: "https://learning.mindcoders.in/",
       dates: "",
       active: true,
       description:
@@ -160,18 +260,18 @@ export const DATA = {
         "MongoDB",
         "RazorPay",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://lms.mindcoders.in/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        // {
-        //   type: "Source",
-        //   href: "https://github.com/dillionverma/llm.report",
-        //   icon: <Icons.github className="size-3" />,
-        // },
-      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://lms.mindcoders.in/",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      //   // {
+      //   //   type: "Source",
+      //   //   href: "https://github.com/dillionverma/llm.report",
+      //   //   icon: <Icons.github className="size-3" />,
+      //   // },
+      // ],
       image: "/lms.png",
       video: "",
     },
@@ -230,31 +330,6 @@ export const DATA = {
         },
       ],
       image: "/mindcoders.png",
-      video:
-        "",
-    },
-    {
-      title: "Resonance Indore",
-      href: "https://resonanceindore.com/",
-      dates: "",
-      active: true,
-      description:
-        "Provided expert guidance and personalized attention to students at Resonance Indore, focusing on IIT JEE/NEET preparation.",
-      technologies: [
-        "React.js",
-        "TailwindCSS",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://resonanceindore.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/Mockup-Resonance.jpg",
       video:
         "",
     },
@@ -328,52 +403,52 @@ export const DATA = {
       video:
         "",
     },
-    {
-      title: "Researchinn",
-      href: "https://researchinn.com/",
-      dates: "",
-      active: true,
-      description:
-        "Contributed to a leading stock market tips agency by providing well-researched alerts and market recommendations, enabling clients to trade effortlessly and effectively.",
-      technologies: [
-        "HTML/CSS",
-        "Bootstrap",
-        "Php",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://researchinn.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/researchinn.png",
-      video:
-        "",
-    },
-    {
-      title: "Finoledge",
-      href: "https://www.finoledge.com/",
-      dates: "",
-      active: true,
-      description:
-        "Simplified financial market knowledge at Finoledge, India's most trusted financial education platform, empowering individuals to invest confidently with comprehensive 360-degree training.",
-      technologies: [
-        "HTML/CSS",
-        "Bootstrap",
-        "Php",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.finoledge.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/Finoledge.png",
-      video:
-        "",
-    },
+    // {
+    //   title: "Researchinn",
+    //   href: "https://researchinn.com/",
+    //   dates: "",
+    //   active: true,
+    //   description:
+    //     "Contributed to a leading stock market tips agency by providing well-researched alerts and market recommendations, enabling clients to trade effortlessly and effectively.",
+    //   technologies: [
+    //     "HTML/CSS",
+    //     "Bootstrap",
+    //     "Php",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://researchinn.com/",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/researchinn.png",
+    //   video:
+    //     "",
+    // },
+    // {
+    //   title: "Finoledge",
+    //   href: "https://www.finoledge.com/",
+    //   dates: "",
+    //   active: true,
+    //   description:
+    //     "Simplified financial market knowledge at Finoledge, India's most trusted financial education platform, empowering individuals to invest confidently with comprehensive 360-degree training.",
+    //   technologies: [
+    //     "HTML/CSS",
+    //     "Bootstrap",
+    //     "Php",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://www.finoledge.com/",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/Finoledge.png",
+    //   video:
+    //     "",
+    // },
   ],
   hackathons: [
     // {
