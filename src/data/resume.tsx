@@ -176,13 +176,13 @@ manage requests and schedules. Admin handles overall service operations and user
         "Dockers",
         "AWS"
       ],
-      // links: [
-      //   {
-      //     type: "Website",
-      //     href: "https://myqready.com/",
-      //     icon: <Icons.globe className="size-3" />,
-      //   },
-      // ],
+      links: [
+        // {
+        //   type: "Website",
+        //   href: "https://myqready.com/",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
+      ],
       image: "/mqready.png",
       video:
         "",
@@ -202,13 +202,13 @@ manage requests and schedules. Admin handles overall service operations and user
         "Express.js",
         "Node.js",
       ],
-      // links: [
+      links: [
       //   {
       //     type: "Website",
       //     href: "https://panel.shribalajilaserdentalclinic.com",
       //     icon: <Icons.globe className="size-3" />,
       //   },
-      // ],
+      ],
       image: "/dental.png",
       video:
         "",
@@ -260,7 +260,7 @@ bidding experiences.`,
         "MongoDB",
         "RazorPay",
       ],
-      // links: [
+      links: [
       //   {
       //     type: "Website",
       //     href: "https://lms.mindcoders.in/",
@@ -271,7 +271,7 @@ bidding experiences.`,
       //   //   href: "https://github.com/dillionverma/llm.report",
       //   //   icon: <Icons.github className="size-3" />,
       //   // },
-      // ],
+      ],
       image: "/lms.png",
       video: "",
     },
