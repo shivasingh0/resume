@@ -100,7 +100,7 @@ export const TimelineItem = ({
             <AvatarImage
               src={logoUrl}
               alt={altText}
-              className="object-contain p-1"
+              className="object-contain p-1 bg-white"
             />
             <AvatarFallback className="bg-primary/10 text-primary font-semibold">
               {altText[0]}

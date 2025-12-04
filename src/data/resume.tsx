@@ -176,13 +176,13 @@ manage requests and schedules. Admin handles overall service operations and user
         "Dockers",
         "AWS"
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://myqready.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://myqready.com/",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
       image: "/mqready.png",
       video:
         "",
@@ -202,13 +202,13 @@ manage requests and schedules. Admin handles overall service operations and user
         "Express.js",
         "Node.js",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://panel.shribalajilaserdentalclinic.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://panel.shribalajilaserdentalclinic.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
       image: "/dental.png",
       video:
         "",
@@ -260,18 +260,18 @@ bidding experiences.`,
         "MongoDB",
         "RazorPay",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://lms.mindcoders.in/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        // {
-        //   type: "Source",
-        //   href: "https://github.com/dillionverma/llm.report",
-        //   icon: <Icons.github className="size-3" />,
-        // },
-      ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://lms.mindcoders.in/",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      //   // {
+      //   //   type: "Source",
+      //   //   href: "https://github.com/dillionverma/llm.report",
+      //   //   icon: <Icons.github className="size-3" />,
+      //   // },
+      // ],
       image: "/lms.png",
       video: "",
     },
@@ -330,31 +330,6 @@ bidding experiences.`,
         },
       ],
       image: "/mindcoders.png",
-      video:
-        "",
-    },
-    {
-      title: "Resonance Indore",
-      href: "https://resonanceindore.com/",
-      dates: "",
-      active: true,
-      description:
-        "Provided expert guidance and personalized attention to students at Resonance Indore, focusing on IIT JEE/NEET preparation.",
-      technologies: [
-        "React.js",
-        "TailwindCSS",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://resonanceindore.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/Mockup-Resonance.jpg",
       video:
         "",
     },
@@ -428,52 +403,52 @@ bidding experiences.`,
       video:
         "",
     },
-    {
-      title: "Researchinn",
-      href: "https://researchinn.com/",
-      dates: "",
-      active: true,
-      description:
-        "Contributed to a leading stock market tips agency by providing well-researched alerts and market recommendations, enabling clients to trade effortlessly and effectively.",
-      technologies: [
-        "HTML/CSS",
-        "Bootstrap",
-        "Php",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://researchinn.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/researchinn.png",
-      video:
-        "",
-    },
-    {
-      title: "Finoledge",
-      href: "https://www.finoledge.com/",
-      dates: "",
-      active: true,
-      description:
-        "Simplified financial market knowledge at Finoledge, India's most trusted financial education platform, empowering individuals to invest confidently with comprehensive 360-degree training.",
-      technologies: [
-        "HTML/CSS",
-        "Bootstrap",
-        "Php",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.finoledge.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/Finoledge.png",
-      video:
-        "",
-    },
+    // {
+    //   title: "Researchinn",
+    //   href: "https://researchinn.com/",
+    //   dates: "",
+    //   active: true,
+    //   description:
+    //     "Contributed to a leading stock market tips agency by providing well-researched alerts and market recommendations, enabling clients to trade effortlessly and effectively.",
+    //   technologies: [
+    //     "HTML/CSS",
+    //     "Bootstrap",
+    //     "Php",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://researchinn.com/",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/researchinn.png",
+    //   video:
+    //     "",
+    // },
+    // {
+    //   title: "Finoledge",
+    //   href: "https://www.finoledge.com/",
+    //   dates: "",
+    //   active: true,
+    //   description:
+    //     "Simplified financial market knowledge at Finoledge, India's most trusted financial education platform, empowering individuals to invest confidently with comprehensive 360-degree training.",
+    //   technologies: [
+    //     "HTML/CSS",
+    //     "Bootstrap",
+    //     "Php",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://www.finoledge.com/",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/Finoledge.png",
+    //   video:
+    //     "",
+    // },
   ],
   hackathons: [
     // {
