@@ -86,7 +86,7 @@ export const TimelineItem = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      className="relative flex gap-6"
+      className="relative flex gap-3"
     >
       {/* Timeline column */}
       <div className="relative flex flex-col items-center pt-1">
@@ -124,14 +124,14 @@ export const TimelineItem = ({
         <motion.div variants={cardVariants}>
           <Card className="group hover:shadow-lg hover:border-primary/20 transition-all duration-300 border-l-4 border-l-primary/20 hover:border-l-primary/40 p-2 border-t border-b border-r">
             <CardHeader className="space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 space-y-2">
+              <div className="flex flex-col md:flex-row items-start justify-between gap-4">
+                <div className="flex-1">
                   <h3 className="font-semibold text-lg leading-tight text-foreground group-hover:text-primary transition-colors duration-300">
                     {title}
                   </h3>
                   {subtitle && (
                     <div className="font-medium text-sm text-muted-foreground">
-                      {subtitle}
+                      <i>{subtitle}</i>
                     </div>
                   )}
                 </div>
