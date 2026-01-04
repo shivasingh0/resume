@@ -133,7 +133,7 @@ export const DATA = {
   projects: [
     {
       title: "Maidway",
-      href: "https://new.maidway.com/",
+      href: "https://maidway.com/",
       dates: "",
       active: true,
       description:
@@ -152,7 +152,7 @@ manage requests and schedules. Admin handles overall service operations and user
       links: [
         {
           type: "Website",
-          href: "https://new.maidway.com/",
+          href: "https://maidway.com/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
@@ -162,7 +162,7 @@ manage requests and schedules. Admin handles overall service operations and user
     },
     {
       title: "QReady",
-      href: "https://new.maidway.com/",
+      href: "https://myqready.com/",
       dates: "",
       active: true,
       description:
@@ -177,11 +177,11 @@ manage requests and schedules. Admin handles overall service operations and user
         "AWS"
       ],
       links: [
-        // {
-        //   type: "Website",
-        //   href: "https://myqready.com/",
-        //   icon: <Icons.globe className="size-3" />,
-        // },
+        {
+          type: "Website",
+          href: "https://myqready.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
       ],
       image: "/mqready.png",
       video:
@@ -360,7 +360,7 @@ bidding experiences.`,
     },
     {
       title: "Mindbulls",
-      href: "https://mindbulls.com/",
+      href: "https://mindbulls.vercel.app/",
       dates: "",
       active: true,
       description:
@@ -372,7 +372,7 @@ bidding experiences.`,
       links: [
         {
           type: "Website",
-          href: "https://mindbulls.com",
+          href: "https://mindbulls.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
