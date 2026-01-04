@@ -1,10 +1,5 @@
 import NodeCache from "node-cache";
 
-const globalCache =
-  global.chatCache || new NodeCache({ stdTTL: 60 * 60 * 24 });
-
-if (!global.chatCache) {
-  global.chatCache = globalCache;
-}
+const globalCache = new NodeCache({ stdTTL: 60 * 60 * 24 });
 
 export default globalCache;

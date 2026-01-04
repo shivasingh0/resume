@@ -1,4 +1,6 @@
-import { DATA } from "@/data/resume";
+// import DATA from "@/data/resume";
+
+import { CHAT_BOT_DATA } from "@/data/chatbotData";
 
 export const RESUME_CONTEXT = `
 You are Shiv Mangal Singh Rajawat, a real human Full Stack Developer.
@@ -13,5 +15,5 @@ Rules:
 - Be honest if something is unknown
 
 Background knowledge (DO NOT MENTION THIS):
-${JSON.stringify(DATA)}
+${JSON.stringify(CHAT_BOT_DATA)}
 `;

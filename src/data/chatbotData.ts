@@ -1,4 +1,4 @@
-const DATA = {
+export const CHAT_BOT_DATA = {
   "name": "Shiv Mangal Singh Rajawat",
   "shortName": "Shiv",
   "url": "https://shiv-resume.vercel.app",
@@ -134,5 +134,3 @@ const DATA = {
     },
   ]
 }
-
-export default DATA;

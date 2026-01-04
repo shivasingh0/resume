@@ -2,8 +2,13 @@ import groq from "./groq";
 import cache from "./cache";
 import { RESUME_CONTEXT } from "./resumeContext";
 
-export async function generate(userMessage : any, threadId : any)  {
-  const baseMessages = [
+type ChatMessage = {
+  role: "system" | "user" | "assistant";
+  content: any;
+};
+
+export async function generate(userMessage : string, threadId : string)  {
+  const baseMessages : ChatMessage[] = [
     {
       role: "system",
       content: `
@@ -21,7 +26,7 @@ Current date: ${new Date().toUTCString()}
     },
   ];
 
-  const messages = cache.get(threadId) ?? baseMessages;
+  const messages = cache.get<ChatMessage[]>(threadId) ?? baseMessages;
 
   messages.push({
     role: "user",
