@@ -34,7 +34,7 @@ Current date: ${new Date().toUTCString()}
   });
 
   const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: process.env.GROQ_MODEL ?? "llama-3.1-8b-instant",
     temperature: 0.2,
     messages,
   });

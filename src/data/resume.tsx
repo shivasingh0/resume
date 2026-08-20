@@ -2,25 +2,31 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";``
 
 export const DATA = {
-  name: "Shiv",
+  name: "Shiv Rajawat",
   initials: "S",
   url: "https://shiv-resume.vercel.app",
   location: "Indore, M.P. India",
   locationLink: "https://maps.app.goo.gl/BzS6oHJd7NmYMWRm8",
-  description:
-    "Full-Stack Developer | React.js | Node.js | Next.js",
+  description: "Full Stack AI Engineer",
   summary:
-    "A results-driven Full Stack Developer with a Bachelor’s in Technology and hands-on expertise gained through professional experience and advanced training from Physics Wallah. Skilled in building scalable and high-performance web applications using React.js, Next.js, and Node.js. I thrive in fast-paced environments, quickly adapt to new technologies, and consistently deliver reliable, user-focused solutions. Passionate about continuous learning and innovation, I’m excited to contribute to modern products and collaborate with teams that value growth, creativity, and engineering excellence.",
+    "Full Stack AI Engineer with 2.6+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. Experienced in REST API development, database architecture, automation workflows, AI assistant integrations, and production deployments. Hands-on experience with OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems, with a strong focus on building intelligent and scalable automation solutions.",
   avatarUrl: "/myImg.jpg",
   skills: [
     "React.js",
     "Next.js",
-    "Javascript",
-    "Typescript",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "SQL",
     "Node.js",
     "Nest.js",
     "Express.js",
+    "Mongoose",
     "MongoDB",
+    "MSSQL",
+    "PostgreSQL",
+    "Pinecone",
+    "ChromaDB",
     "AWS",
     "Docker",
     "HTML/CSS",
@@ -29,6 +35,12 @@ export const DATA = {
     "Material UI",
     "Git/Github",
     "Postman",
+    "OpenAI API",
+    "Google Gemini API",
+    "LangChain",
+    "RAG",
+    "n8n",
+    "Vapi Voice AI",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -93,7 +105,7 @@ export const DATA = {
       start: "May 2025",
       end: "Present",
       description:
-        "Full Stack Developer at WebiWork Technologies, building and optimizing scalable web applications using Next.js, React.js, Node.js, Express.js, and Tailwind css improving load performance by 20%, reducing integration issues by  10%, and enhancing code quality and development speed through reusable components and efficient backend API architecture.",
+        "Developed and maintained scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. Built optimized REST APIs, webhooks, and third-party integrations for workflow automation and business applications. Developed AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts, and built n8n automation workflows for business systems and notifications. Experimented with AI agent workflows using LangChain and CrewAI for task orchestration and conversational AI use cases.",
     },
     {
       company: "Mindcoders",
@@ -105,7 +117,7 @@ export const DATA = {
       start: "October 2023",
       end: "April 2025",
       description:
-        "Led frontend development initiatives for over five web applications, optimizing performance and usability, resulting in a 20% improvement in load times and user satisfaction. Developed responsive web UIs using HTML, CSS, JavaScript, React, and Tailwind, reducing design-to-development time by 15%. Collaborated with cross-functional teams, including both frontend and backend, to ensure seamless integration, which led to a 10% decrease in API-related issues. Implemented industry best practices and emerging technologies, enhancing overall code quality by 25%.",
+        "Built and deployed 5+ production-grade applications including LMS and CRM platforms. Improved application performance and accessibility using React Profiler and Lighthouse audits. Integrated REST APIs using Redux Toolkit and custom hooks for efficient state management, developed reusable UI components, and optimized frontend performance to improve load time and user experience.",
     },
     {
       company: "Mindcoders",
@@ -117,7 +129,7 @@ export const DATA = {
       start: "July 2023",
       end: "September 2023",
       description:
-        "",
+        "Contributed to the development of production-grade React.js applications and assisted with performance optimization and debugging using modern development tools. Gained hands-on experience in full-stack development and agile workflows.",
     },
   ],
   education: [
@@ -137,9 +149,7 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        `Developed an online cleaning service platform with role-based access for Admin, Provider, and
-Customer. Customers can book cleaning appointments based on service needs, while providers
-manage requests and schedules. Admin handles overall service operations and user management.`,
+        `Integrated AI-powered voice agents using Vapi to automate customer interactions, appointment scheduling, and booking workflows. Developed conversational AI workflows for customer support, appointment reminders, and service inquiries. Built automation pipelines using Twilio and SendGrid, implemented intelligent scheduling and recurring booking workflows, and developed analytics dashboards for business insights and performance monitoring.`,
       technologies: [
         "Replit",
         "React + Vite",
@@ -159,6 +169,47 @@ manage requests and schedules. Admin handles overall service operations and user
       image: "/maidway.png",
       video:
         "",
+    },
+    {
+      title: "AI Knowledge Assistant",
+      href: "#",
+      dates: "",
+      active: true,
+      description:
+        "Developed an AI-powered document intelligence platform enabling semantic search and contextual question-answering across uploaded documents. Implemented RAG workflows using LangChain, OpenAI APIs, and vector embeddings, integrated Pinecone for document indexing and retrieval, built FastAPI services for ingestion and response generation, and Dockerized the application for scalable deployment.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "OpenAI API",
+        "LangChain",
+        "Pinecone",
+        "React.js",
+        "Docker",
+      ],
+      links: [],
+      image: undefined,
+      video: "",
+    },
+    {
+      title: "AimQTest",
+      href: "#",
+      dates: "",
+      active: true,
+      description:
+        "Built an AI-powered career guidance platform enabling personalized career recommendations based on student assessments. Developed REST APIs and backend services for assessments, report generation, and counselling workflows, implemented real-time counselling with WebSockets, and secured the platform with JWT authentication and role-based access control.",
+      technologies: [
+        "Python",
+        "React.js",
+        "Node.js",
+        "NestJS",
+        "MongoDB",
+        "WebSockets",
+        "JWT",
+        "Docker",
+      ],
+      links: [],
+      image: undefined,
+      video: "",
     },
     {
       title: "QReady",

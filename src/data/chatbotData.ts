@@ -3,8 +3,8 @@ export const CHAT_BOT_DATA = {
   "shortName": "Shiv",
   "url": "https://shiv-resume.vercel.app",
   "location": "Indore, Madhya Pradesh, India",
-  "description": "Full-Stack Developer | React.js | Node.js | Next.js",
-  "summary": "I am a results-driven Full Stack Developer with a Bachelor’s degree in Technology and hands-on professional experience. I specialize in building scalable and high-performance web applications using React.js, Next.js, and Node.js. I thrive in fast-paced environments, adapt quickly to new technologies, and focus on delivering reliable, user-centric solutions. I am passionate about continuous learning, innovation, and collaborating with growth-oriented teams.",
+  "description": "Full Stack AI Engineer",
+  "summary": "I am a Full Stack AI Engineer with 2.6+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. I work with REST APIs, database architecture, automation workflows, OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems.",
   "contact": {
     "email": "shiva2003rajawat@gmail.com",
     "phone": "+91-7007094154",
@@ -15,13 +15,19 @@ export const CHAT_BOT_DATA = {
   "skills": [
     "JavaScript",
     "TypeScript",
+    "Python",
+    "SQL",
     "React.js",
     "Next.js",
     "Node.js",
     "Nest.js",
     "Express.js",
+    "Mongoose",
     "MongoDB",
+    "MSSQL",
     "PostgreSQL",
+    "Pinecone",
+    "ChromaDB",
     "AWS",
     "Docker",
     "HTML",
@@ -33,6 +39,12 @@ export const CHAT_BOT_DATA = {
     "Git",
     "GitHub",
     "Postman"
+    ,"OpenAI API"
+    ,"Google Gemini API"
+    ,"LangChain"
+    ,"RAG"
+    ,"n8n"
+    ,"Vapi Voice AI"
   ],
   "workExperience": [
     {
@@ -41,7 +53,7 @@ export const CHAT_BOT_DATA = {
       "location": "Indore, Madhya Pradesh, India",
       "startDate": "May 2025",
       "endDate": "Present",
-      "description": "I work as a Full Stack Developer, building and optimizing scalable web applications using Next.js, React.js, Node.js, Express.js, and Tailwind CSS. I improved application load performance by 20%, reduced integration issues by 10%, and enhanced development speed through reusable components and efficient backend API architecture."
+      "description": "I develop and maintain scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. I build REST APIs, webhooks, third-party integrations, n8n automation workflows, and AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts."
     },
     {
       "company": "Mindcoders",
@@ -49,7 +61,7 @@ export const CHAT_BOT_DATA = {
       "location": "Indore, Madhya Pradesh, India",
       "startDate": "October 2023",
       "endDate": "April 2025",
-      "description": "I led frontend development for multiple web applications, improving load times by 20% and overall user satisfaction. I built responsive UIs using React and Tailwind CSS, reduced design-to-development time by 15%, collaborated with backend teams to reduce API issues by 10%, and improved code quality by 25% by following best practices."
+      "description": "I built and deployed 5+ production-grade applications including LMS and CRM platforms. I improved application performance and accessibility using React Profiler and Lighthouse audits, integrated REST APIs using Redux Toolkit and custom hooks, developed reusable UI components, and optimized frontend performance."
     },
     {
       "company": "Mindcoders",
@@ -57,12 +69,12 @@ export const CHAT_BOT_DATA = {
       "location": "Indore, Madhya Pradesh, India",
       "startDate": "July 2023",
       "endDate": "September 2023",
-      "description": "I worked as a Software Developer Intern, gaining hands-on experience in frontend and backend development while contributing to live projects."
+      "description": "I contributed to production-grade React.js applications, assisted with performance optimization and debugging, and gained hands-on experience in full-stack development and agile workflows."
     }
   ],
   "education": [
     {
-      "institution": "Acropolis Institute of Technology and Research",
+      "institution": "RGPV University",
       "degree": "Bachelor of Technology",
       "startYear": "2019",
       "endYear": "2023"
@@ -71,7 +83,7 @@ export const CHAT_BOT_DATA = {
   "projects": [
     {
       "name": "Maidway",
-      "description": "An online cleaning service platform with role-based access for Admin, Provider, and Customer. Customers can book services, providers manage schedules, and admins handle overall operations.",
+      "description": "I integrated AI-powered voice agents using Vapi to automate customer interactions, appointment scheduling, and booking workflows. I developed conversational AI workflows, Twilio and SendGrid automation pipelines, intelligent recurring booking workflows, and analytics dashboards.",
       "techStack": [
         "React",
         "Vite",
@@ -79,6 +91,33 @@ export const CHAT_BOT_DATA = {
         "PostgreSQL",
         "Node.js",
         "Express.js"
+      ]
+    },
+    {
+      "name": "AI Knowledge Assistant",
+      "description": "An AI-powered document intelligence platform for semantic search and contextual question-answering across uploaded documents. It uses RAG workflows, LangChain, OpenAI APIs, Pinecone vector search, FastAPI services, and Dockerized deployment.",
+      "techStack": [
+        "Python",
+        "FastAPI",
+        "OpenAI API",
+        "LangChain",
+        "Pinecone",
+        "React.js",
+        "Docker"
+      ]
+    },
+    {
+      "name": "AimQTest",
+      "description": "An AI-powered career guidance platform providing personalized recommendations from student assessments, with REST APIs, counselling workflows, WebSockets, JWT authentication, role-based access control, and Dockerized services.",
+      "techStack": [
+        "Python",
+        "React.js",
+        "Node.js",
+        "NestJS",
+        "MongoDB",
+        "WebSockets",
+        "JWT",
+        "Docker"
       ]
     },
     {
