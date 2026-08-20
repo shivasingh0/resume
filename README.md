@@ -42,3 +42,7 @@ Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://
    ```
 
 5. Open the [Config file](./src/data/resume.tsx) and make changes
+
+## Voice Chat
+
+Voice chat uses browser speech recognition for microphone input and browser speech synthesis for spoken replies. It requires no voice provider account or API key. Voice input starts only after a visitor explicitly presses Start and grants microphone access. Browsers without speech-recognition support can continue using text chat.
