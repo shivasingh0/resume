@@ -2,13 +2,17 @@ import { NextResponse } from "next/server";
 import { generate } from "@/lib/chatbot";
 
 export async function POST(req : Request) {
-    console.log("req", req);
   try {
     const { message, threadId } = await req.json();
-    console.log("message", message, "threadId", threadId);
-    if (!message || !threadId) {
+    if (
+      typeof message !== "string" ||
+      typeof threadId !== "string" ||
+      !message.trim() ||
+      !/^[a-z0-9_-]{8,80}$/i.test(threadId) ||
+      message.length > 2000
+    ) {
       return NextResponse.json(
-        { message: "All fields are required!" },
+        { message: "Please provide a valid message." },
         { status: 400 }
       );
     }
