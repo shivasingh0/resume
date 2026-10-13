@@ -9,7 +9,7 @@ export const DATA = {
   locationLink: "https://maps.app.goo.gl/BzS6oHJd7NmYMWRm8",
   description: "Full Stack AI Engineer",
   summary:
-    "Full Stack AI Engineer with 2.6+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. Experienced in REST API development, database architecture, automation workflows, AI assistant integrations, and production deployments. Hands-on experience with OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems, with a strong focus on building intelligent and scalable automation solutions.",
+    "Full Stack AI Engineer with 3+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. Experienced in REST API development, database architecture, automation workflows, AI assistant integrations, and production deployments. Hands-on experience with OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems, with a strong focus on building intelligent and scalable automation solutions.",
   avatarUrl: "/myImg.jpg",
   skills: [
     "React.js",
@@ -96,6 +96,18 @@ export const DATA = {
 
   work: [
     {
+      company: "Svast Healthcare Technologies",
+      href: "https://www.svasthealthtech.com/",
+      badges: [],
+      location: "Indore, M.P., India",
+      title: "Software Developer",
+      logoUrl: "/svast.jpg",
+      start: "August 2026",
+      end: "Present",
+      description:
+        "Developing and maintaining healthcare technology solutions and Revenue Cycle Management (RCM) platforms. Building scalable web applications, robust backend services, and REST APIs to streamline medical billing, claims processing, and healthcare analytics workflows. Implementing workflow automation and data intelligence pipelines to improve operational efficiency, data accuracy, and user experience.",
+    },
+    {
       company: "WebiWork Technologies Pvt. Ltd.",
       href: "https://webiwork.com/",
       badges: [],
@@ -103,7 +115,7 @@ export const DATA = {
       title: "Full Stack Developer",
       logoUrl: "https://webiwork.com/wp-content/uploads/2022/11/cropped-webiwork_Logo-32x32.png",
       start: "May 2025",
-      end: "Present",
+      end: "August 2026",
       description:
         "Developed and maintained scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. Built optimized REST APIs, webhooks, and third-party integrations for workflow automation and business applications. Developed AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts, and built n8n automation workflows for business systems and notifications. Experimented with AI agent workflows using LangChain and CrewAI for task orchestration and conversational AI use cases.",
     },

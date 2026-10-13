@@ -4,7 +4,7 @@ export const CHAT_BOT_DATA = {
   "url": "https://shiv-resume.vercel.app",
   "location": "Indore, Madhya Pradesh, India",
   "description": "Full Stack AI Engineer",
-  "summary": "I am a Full Stack AI Engineer with 2.6+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. I work with REST APIs, database architecture, automation workflows, OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems.",
+  "summary": "I am a Full Stack AI Engineer with 3+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. I work with REST APIs, database architecture, automation workflows, OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems.",
   "contact": {
     "email": "shiva2003rajawat@gmail.com",
     "phone": "+91-7007094154",
@@ -48,11 +48,19 @@ export const CHAT_BOT_DATA = {
   ],
   "workExperience": [
     {
+      "company": "Svast Healthcare Technologies",
+      "role": "Software Developer",
+      "location": "Indore, Madhya Pradesh, India",
+      "startDate": "August 2026",
+      "endDate": "Present",
+      "description": "I work as a Software Developer developing and maintaining healthcare technology solutions and Revenue Cycle Management (RCM) platforms. I build scalable web applications, robust backend services, and REST APIs to streamline medical billing, claims processing, and healthcare analytics workflows."
+    },
+    {
       "company": "WebiWork Technologies Pvt. Ltd.",
       "role": "Full Stack Developer",
       "location": "Indore, Madhya Pradesh, India",
       "startDate": "May 2025",
-      "endDate": "Present",
+      "endDate": "August 2026",
       "description": "I develop and maintain scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. I build REST APIs, webhooks, third-party integrations, n8n automation workflows, and AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts."
     },
     {
