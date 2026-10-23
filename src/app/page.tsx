@@ -230,7 +230,7 @@ export default function Page() {
             <div className="flex justify-center mb-12 items-center">
               <Link
                 download={true}
-                href="/ShivMangal_FullStack_2Yrs_Resume.pdf"
+                href="/Shiv_Rajawat_AI_Resume.pdf"
                 target="_blank"
                 className="inline-block w-fit rounded-lg bg-foreground text-background px-3 py-2 text-sm"
               >

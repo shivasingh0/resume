@@ -15,6 +15,7 @@ import {
   Square,
   Volume2,
 } from "lucide-react";
+import Markdown from "react-markdown";
 
 type ChatMessage = {
   id: string;
@@ -23,6 +24,7 @@ type ChatMessage = {
 };
 
 type SpeechRecognitionResultEvent = Event & {
+  resultIndex?: number;
   results: {
     [index: number]: {
       [index: number]: { transcript: string };
@@ -36,6 +38,7 @@ type SpeechRecognitionInstance = {
   continuous: boolean;
   interimResults: boolean;
   lang: string;
+  onstart: (() => void) | null;
   onend: (() => void) | null;
   onerror: ((event: Event) => void) | null;
   onresult: ((event: SpeechRecognitionResultEvent) => void) | null;
@@ -45,32 +48,26 @@ type SpeechRecognitionInstance = {
 
 type SpeechRecognitionConstructor = new () => SpeechRecognitionInstance;
 
-function TypingMessage({ text }: { text: string }) {
-  const [visibleText, setVisibleText] = useState("");
+const STORAGE_KEY_THREAD = "shiv_chat_thread_id_v1";
+const STORAGE_KEY_MESSAGES = "shiv_chat_messages_v1";
+const MAX_HISTORY_MSG_LENGTH = 1999;
 
-  useEffect(() => {
-    let characterIndex = 0;
-    const interval = window.setInterval(() => {
-      characterIndex += 1;
-      setVisibleText(text.slice(0, characterIndex));
-
-      if (characterIndex >= text.length) {
-        window.clearInterval(interval);
-      }
-    }, 18);
-
-    return () => window.clearInterval(interval);
-  }, [text]);
-
-  return (
-    <span aria-label={text}>
-      {visibleText}
-      {visibleText.length < text.length && (
-        <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-current align-middle" aria-hidden="true" />
-      )}
-    </span>
-  );
+function cleanMarkdownForSpeech(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/https?:\/\/\S+/g, "")
+    .replace(/[*_~`#]+/g, "")
+    .replace(/^>\s+/gm, "")
+    .replace(/^[-*+]\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
+
+const DEFAULT_WELCOME_MESSAGE: ChatMessage = {
+  id: "welcome",
+  role: "assistant",
+  text: "Hi! I'm Shiv's AI digital representative. What would you like to know about his skills, projects, work experience, or background?",
+};
 
 export function FloatingChatbot() {
   return <FloatingChatbotContent />;
@@ -82,32 +79,86 @@ function FloatingChatbotContent() {
   const [voiceError, setVoiceError] = useState("");
   const [isCallActive, setIsCallActive] = useState(false);
   const [voiceStatus, setVoiceStatus] = useState<
-    "idle" | "listening" | "thinking" | "speaking" | "unsupported"
+    "idle" | "connecting" | "listening" | "thinking" | "speaking" | "unsupported"
   >("idle");
   const [interimTranscript, setInterimTranscript] = useState("");
   const [isVoiceOutputMuted, setIsVoiceOutputMuted] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: "welcome",
-      role: "assistant",
-      text: "Hi! I'm Shiv. What do you want to know about me?",
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([DEFAULT_WELCOME_MESSAGE]);
   const [inputValue, setInputValue] = useState("");
   const [mounted, setMounted] = useState(false);
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
   const voiceRequestRef = useRef(0);
   const voiceSessionRef = useRef(false);
   const voiceProcessingRef = useRef(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const threadIdRef = useRef<string>(
+    Date.now().toString(36) + Math.random().toString(36).substring(2, 8)
+  );
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const threadIdRef = useRef(
-    Date.now().toString(36) + Math.random().toString(36).substring(2, 8)
-  );
+    // Restore threadId and messages from sessionStorage if available
+    try {
+      const storedThread = sessionStorage.getItem(STORAGE_KEY_THREAD);
+      if (storedThread && /^[a-z0-9_-]{8,80}$/i.test(storedThread)) {
+        threadIdRef.current = storedThread;
+      } else {
+        sessionStorage.setItem(STORAGE_KEY_THREAD, threadIdRef.current);
+      }
+
+      const storedMessages = sessionStorage.getItem(STORAGE_KEY_MESSAGES);
+      if (storedMessages) {
+        const parsed = JSON.parse(storedMessages);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const validated = parsed
+            .filter((m): m is ChatMessage => {
+              if (!m || typeof m !== "object") return false;
+              if (m.id === "welcome") return true;
+              if (typeof m.id === "string" && m.id.startsWith("error-")) return false;
+              const role = m.role;
+              if (role !== "user" && role !== "assistant") return false;
+              const text =
+                typeof m.text === "string"
+                  ? m.text
+                  : typeof (m as any).content === "string"
+                  ? (m as any).content
+                  : "";
+              return text.trim().length > 0;
+            })
+            .map((m): ChatMessage => {
+              const text =
+                typeof m.text === "string"
+                  ? m.text
+                  : typeof (m as any).content === "string"
+                  ? (m as any).content
+                  : "";
+              return {
+                id: m.id || `${m.role}-${Date.now()}`,
+                role: m.role as "user" | "assistant",
+                text: text.slice(0, MAX_HISTORY_MSG_LENGTH),
+              };
+            });
+          if (validated.length > 0) {
+            setMessages(validated);
+          }
+        }
+      }
+    } catch {
+      // sessionStorage unavailable or restricted
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    try {
+      sessionStorage.setItem(STORAGE_KEY_MESSAGES, JSON.stringify(messages));
+    } catch {
+      // ignore storage quota errors
+    }
+  }, [messages, mounted]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -125,28 +176,47 @@ function FloatingChatbotContent() {
       window as Window & { webkitSpeechRecognition?: SpeechRecognitionConstructor }
     ).webkitSpeechRecognition;
 
+    if (!SpeechRecognition) {
+      setVoiceStatus("unsupported");
+      setVoiceError("Speech recognition is not supported in this browser. Please use text chat.");
+      return;
+    }
+
     if (
-      !SpeechRecognition ||
       recognitionRef.current ||
       !voiceSessionRef.current ||
       (voiceProcessingRef.current && !preserveStatus)
-    ) return;
+    ) {
+      return;
+    }
 
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = "en-US";
+
+    recognition.onstart = () => {
+      // Set listening state ONLY when speech recognition has actually started
+      if (!preserveStatus && voiceSessionRef.current) {
+        setVoiceStatus("listening");
+      }
+    };
+
     recognition.onresult = (event) => {
       let finalTranscript = "";
       let interim = "";
-      for (let index = 0; index < event.results.length; index += 1) {
+      const startIndex = typeof event.resultIndex === "number" ? event.resultIndex : 0;
+      for (let index = startIndex; index < event.results.length; index += 1) {
         const transcript = event.results[index][0].transcript;
         if (event.results[index].isFinal) finalTranscript += transcript;
         else interim += transcript;
       }
       setInterimTranscript(interim);
+
       if (finalTranscript.trim() && voiceSessionRef.current) {
+        // Prevent duplicate processing
         if (voiceProcessingRef.current && !window.speechSynthesis.speaking) return;
+
         window.speechSynthesis.cancel();
         voiceProcessingRef.current = true;
         recognition.stop();
@@ -156,28 +226,71 @@ function FloatingChatbotContent() {
         void sendChatMessage(finalTranscript, true);
       }
     };
+
     recognition.onerror = (event) => {
       const error = event as Event & { error?: string };
-      if (error.error === "aborted" || !voiceSessionRef.current) return;
-      setVoiceError("Microphone or speech recognition failed.");
+      const errType = error.error;
+
+      if (errType === "aborted" || !voiceSessionRef.current) {
+        return;
+      }
+
+      // 'no-speech' is a normal silence timeout in Chromium; do NOT treat as fatal
+      if (errType === "no-speech") {
+        return;
+      }
+
+      if (errType === "not-allowed") {
+        setVoiceError("Microphone access was denied. Please allow microphone permissions in your browser.");
+        setVoiceStatus("idle");
+        voiceSessionRef.current = false;
+        setIsCallActive(false);
+        return;
+      }
+
+      if (errType === "audio-capture") {
+        setVoiceError("No microphone detected. Please connect a microphone and try again.");
+        setVoiceStatus("idle");
+        voiceSessionRef.current = false;
+        setIsCallActive(false);
+        return;
+      }
+
+      setVoiceError("Speech recognition encountered an issue. You can continue with text chat.");
       setVoiceStatus("idle");
     };
+
     recognition.onend = () => {
       recognitionRef.current = null;
-      if (voiceSessionRef.current && (!voiceProcessingRef.current || window.speechSynthesis.speaking)) {
+      if (
+        voiceSessionRef.current &&
+        (!voiceProcessingRef.current || window.speechSynthesis.speaking)
+      ) {
         window.setTimeout(
           () => startRecognition(window.speechSynthesis.speaking),
           150
         );
       }
     };
+
     recognitionRef.current = recognition;
-    if (!preserveStatus) setVoiceStatus("listening");
-    recognition.start();
+    if (!preserveStatus) {
+      setVoiceStatus("connecting");
+    }
+
+    try {
+      recognition.start();
+    } catch {
+      recognitionRef.current = null;
+      setVoiceStatus("idle");
+    }
   };
 
   const stopVoiceOutput = () => {
-    window.speechSynthesis.cancel();
+    abortControllerRef.current?.abort();
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
     voiceProcessingRef.current = false;
     setVoiceStatus("idle");
     if (voiceSessionRef.current) startRecognition();
@@ -188,7 +301,23 @@ function FloatingChatbotContent() {
       return;
     }
 
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      voiceProcessingRef.current = false;
+      setVoiceStatus(voiceSessionRef.current ? "listening" : "idle");
+      setVoiceError("Voice playback is unavailable in this browser. You can continue with text chat.");
+      if (voiceSessionRef.current) startRecognition();
+      return;
+    }
+
     window.speechSynthesis.cancel();
+    const cleanText = cleanMarkdownForSpeech(text);
+    if (!cleanText) {
+      voiceProcessingRef.current = false;
+      setVoiceStatus(voiceSessionRef.current ? "listening" : "idle");
+      if (voiceSessionRef.current) startRecognition();
+      return;
+    }
+
     let hasSpoken = false;
     const speak = () => {
       if (hasSpoken || requestId !== voiceRequestRef.current || isVoiceOutputMuted) return;
@@ -211,33 +340,62 @@ function FloatingChatbotContent() {
           voice.lang.toLowerCase().startsWith("en") &&
           maleVoicePattern.test(voice.name)
       );
-      const indianVoice =
+      const selectedVoice =
         maleIndianVoice ??
         maleEnglishVoice ??
         indianEnglishVoices[0] ??
-        voices.find((voice) => voice.lang.toLowerCase().startsWith("en"));
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.voice = indianVoice ?? null;
-      utterance.lang = "en-IN";
-      utterance.rate = 0.92;
-      utterance.pitch = 0.98;
+        voices.find((voice) => voice.lang.toLowerCase().startsWith("en")) ??
+        null;
+
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.voice = selectedVoice;
+      utterance.lang = selectedVoice?.lang || "en-US";
+      utterance.rate = 0.95;
+      utterance.pitch = 1.0;
       utterance.volume = 1;
-      utterance.onstart = () => setVoiceStatus("speaking");
+
+      utterance.onstart = () => {
+        setVoiceStatus("speaking");
+        setVoiceError("");
+      };
+
       utterance.onend = () => {
         voiceProcessingRef.current = false;
         if (voiceSessionRef.current) {
           setVoiceStatus("listening");
+          startRecognition();
         } else {
           setVoiceStatus("idle");
         }
-        startRecognition();
       };
-      utterance.onerror = () => {
+
+      utterance.onerror = (event: SpeechSynthesisErrorEvent | Event) => {
         voiceProcessingRef.current = false;
-        setVoiceStatus("idle");
-        setVoiceError("Voice playback is unavailable. You can continue with text chat.");
-        startRecognition();
+        const errType = (event as { error?: string })?.error;
+
+        // Normal cancellation or interruption should not be treated as a failure
+        if (errType === "canceled" || errType === "interrupted") {
+          return;
+        }
+
+        let friendlyError = "Voice playback is unavailable. You can continue with text chat.";
+        if (errType === "not-allowed") {
+          friendlyError = "Audio playback was blocked. Please check browser audio permissions.";
+        } else if (errType === "audio-busy") {
+          friendlyError = "Audio device is currently busy. Please try again.";
+        } else if (errType === "voice-unavailable" || errType === "language-unavailable") {
+          friendlyError = "Selected voice is unavailable on your system. Continuing with default voice.";
+        } else if (errType === "network") {
+          friendlyError = "Network error while loading speech synthesis voice.";
+        }
+
+        setVoiceStatus(voiceSessionRef.current ? "listening" : "idle");
+        setVoiceError(friendlyError);
+        if (voiceSessionRef.current) {
+          startRecognition();
+        }
       };
+
       window.speechSynthesis.speak(utterance);
     };
 
@@ -265,41 +423,136 @@ function FloatingChatbotContent() {
     const trimmedMessage = message.trim();
     if (!trimmedMessage) return;
 
-    setMessages((prev) => [
-      ...prev,
-      { id: `user-${Date.now()}`, role: "user", text: trimmedMessage },
-    ]);
+    // Abort any ongoing stream
+    abortControllerRef.current?.abort();
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
+
+    const userMessageId = `user-${Date.now()}`;
+    const assistantMessageId = `assistant-${Date.now() + 1}`;
+
+    // Validate the current user message separately (up to 2000 characters)
+    const currentQuery = trimmedMessage.slice(0, 2000);
+
+    const userMessage: ChatMessage = {
+      id: userMessageId,
+      role: "user",
+      text: currentQuery,
+    };
+
+    const initialAssistantMessage: ChatMessage = {
+      id: assistantMessageId,
+      role: "assistant",
+      text: "",
+    };
+
+    // Calculate bounded, normalized client history:
+    // 1. Exclude welcome placeholder, empty turns, and previous error turns
+    // 2. Validate roles are strictly "user" or "assistant"
+    // 3. Keep latest 6 valid historical messages in chronological order
+    // 4. Truncate oversized historical messages to exactly 1,999 characters without touching currentQuery
+    const validHistory = messages.filter(
+      (m): m is ChatMessage =>
+        Boolean(m) &&
+        m.id !== "welcome" &&
+        !m.id.startsWith("error-") &&
+        (m.role === "user" || m.role === "assistant") &&
+        typeof m.text === "string" &&
+        m.text.trim().length > 0
+    );
+
+    const historyToSend = validHistory
+      .slice(-6)
+      .map((m) => ({
+        role: m.role,
+        content: m.text.trim().slice(0, MAX_HISTORY_MSG_LENGTH),
+      }));
+
+    // Append to UI messages state
+    setMessages((prev) => [...prev, userMessage, initialAssistantMessage]);
 
     try {
+      if (speakReply) {
+        setVoiceStatus("thinking");
+      }
+
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: trimmedMessage,
+          message: currentQuery,
           threadId: threadIdRef.current,
+          history: historyToSend,
         }),
+        signal: abortController.signal,
       });
-      const result = (await response.json()) as { message?: string };
-      if (!response.ok || !result.message) throw new Error("Chat request failed.");
 
-      setMessages((prev) => [
-        ...prev,
-        { id: `assistant-${Date.now()}`, role: "assistant", text: result.message! },
-      ]);
-      if (speakReply) playVoiceReply(result.message, voiceRequestRef.current);
-    } catch (error) {
+      if (!response.ok) {
+        let errorMessage = "Chat request failed.";
+        try {
+          const errorData = await response.json();
+          if (errorData?.message) errorMessage = errorData.message;
+        } catch {
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
+
+      if (!response.body) {
+        throw new Error("No response body received from server.");
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulatedText = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunkText = decoder.decode(value, { stream: true });
+        accumulatedText += chunkText;
+
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === assistantMessageId
+              ? { ...msg, text: accumulatedText }
+              : msg
+          )
+        );
+      }
+
+      // Voice output: speak only when complete answer has streamed
+      if (speakReply && accumulatedText.trim()) {
+        playVoiceReply(accumulatedText, voiceRequestRef.current);
+      }
+    } catch (error: unknown) {
+      if ((error as { name?: string })?.name === "AbortError") {
+        return;
+      }
       voiceProcessingRef.current = false;
       setVoiceStatus("idle");
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `error-${Date.now()}`,
-          role: "assistant",
-          text: "Sorry, something went wrong. Please try again.",
-        },
-      ]);
-      if (speakReply) setVoiceError(error instanceof Error ? error.message : "Voice chat failed.");
-      if (speakReply) startRecognition();
+
+      const failureText =
+        error instanceof Error
+          ? error.message
+          : "Sorry, something went wrong. Please try again.";
+
+      // Prefix id with error- so it is never re-sent in history on subsequent turns
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === assistantMessageId
+            ? { id: `error-${Date.now()}`, role: "assistant", text: failureText }
+            : msg
+        )
+      );
+
+      if (speakReply) {
+        setVoiceError(failureText);
+        if (voiceSessionRef.current) {
+          startRecognition();
+        }
+      }
     }
   };
 
@@ -313,10 +566,11 @@ function FloatingChatbotContent() {
 
     if (!SpeechRecognition) {
       setVoiceStatus("unsupported");
+      setVoiceError("Speech recognition is not supported in this browser. Please use text chat.");
       return;
     }
     if (!window.isSecureContext && window.location.hostname !== "localhost") {
-      setVoiceError("Voice chat requires a secure connection.");
+      setVoiceError("Voice chat requires a secure (HTTPS) connection.");
       return;
     }
 
@@ -341,6 +595,7 @@ function FloatingChatbotContent() {
 
   useEffect(() => {
     return () => {
+      abortControllerRef.current?.abort();
       voiceSessionRef.current = false;
       voiceProcessingRef.current = false;
       recognitionRef.current?.stop();
@@ -486,18 +741,22 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
                 <p className="text-sm font-medium">
                   {voiceStatus === "listening"
                     ? "Listening..."
-                    : voiceStatus === "thinking"
-                      ? "Thinking..."
-                      : voiceStatus === "speaking"
-                        ? "Speaking..."
-                        : voiceStatus === "unsupported"
-                          ? "Voice input unavailable"
-                          : "Voice chat"}
+                    : voiceStatus === "connecting"
+                      ? "Connecting microphone..."
+                      : voiceStatus === "thinking"
+                        ? "Thinking..."
+                        : voiceStatus === "speaking"
+                          ? "Speaking..."
+                          : voiceStatus === "unsupported"
+                            ? "Voice input unavailable"
+                            : "Voice chat"}
                 </p>
                 <p aria-live="polite" className="text-xs text-muted-foreground">
                   {voiceStatus === "unsupported"
                     ? "Use text chat in this browser."
-                    : interimTranscript || "Press start and speak naturally."}
+                    : voiceStatus === "connecting"
+                      ? "Requesting microphone..."
+                      : interimTranscript || "Press start and speak naturally."}
                 </p>
               </div>
               {voiceStatus === "listening" ? (
@@ -522,7 +781,7 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
                 <button
                   type="button"
                   onClick={handleStartVoice}
-                  disabled={voiceStatus === "thinking"}
+                  disabled={voiceStatus === "thinking" || voiceStatus === "connecting"}
                   className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs text-primary-foreground disabled:opacity-50"
                 >
                   <Mic className="h-4 w-4" />
@@ -557,11 +816,13 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
             <div className={`relative flex h-56 w-56 items-center justify-center rounded-full transition-all duration-700 ${
               voiceStatus === "listening"
                 ? "scale-105 bg-cyan-400/20 shadow-[0_0_90px_rgba(34,211,238,0.45)]"
-                : voiceStatus === "thinking"
-                  ? "scale-95 bg-amber-400/20 shadow-[0_0_90px_rgba(251,191,36,0.35)]"
-                  : voiceStatus === "speaking"
-                    ? "scale-110 bg-violet-400/25 shadow-[0_0_110px_rgba(167,139,250,0.5)]"
-                    : "bg-white/10"
+                : voiceStatus === "connecting"
+                  ? "scale-100 bg-sky-400/20 animate-pulse"
+                  : voiceStatus === "thinking"
+                    ? "scale-95 bg-amber-400/20 shadow-[0_0_90px_rgba(251,191,36,0.35)]"
+                    : voiceStatus === "speaking"
+                      ? "scale-110 bg-violet-400/25 shadow-[0_0_110px_rgba(167,139,250,0.5)]"
+                      : "bg-white/10"
             }`}>
               <div className={`absolute inset-5 rounded-full border border-white/30 ${
                 voiceStatus === "speaking" ? "animate-[voice-orb_1.4s_ease-in-out_infinite]" : "animate-[voice-orb_2.6s_ease-in-out_infinite]"
@@ -574,14 +835,16 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
             <p className="relative mt-10 text-sm font-medium tracking-wide">
               {voiceStatus === "listening"
                 ? "Listening"
-                : voiceStatus === "thinking"
-                  ? "Thinking"
-                  : voiceStatus === "speaking"
-                    ? "Shiv is speaking"
-                    : "Call connected"}
+                : voiceStatus === "connecting"
+                  ? "Connecting microphone..."
+                  : voiceStatus === "thinking"
+                    ? "Thinking"
+                    : voiceStatus === "speaking"
+                      ? "Shiv is speaking"
+                      : "Call connected"}
             </p>
             <p aria-live="polite" className="relative mt-2 min-h-5 max-w-xs text-center text-xs text-muted-foreground">
-              {interimTranscript || (voiceStatus === "speaking" ? "You can interrupt at any time" : "Speak naturally")}
+              {interimTranscript || (voiceStatus === "speaking" ? "You can interrupt at any time" : voiceStatus === "connecting" ? "Requesting microphone permission..." : "Speak naturally")}
             </p>
             <button
               type="button"
@@ -629,9 +892,49 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
                 }`}
               >
                 {msg.role === "assistant" ? (
-                  <TypingMessage text={msg.text} />
+                  msg.text ? (
+                    <Markdown
+                      className="prose dark:prose-invert max-w-none text-sm break-words leading-relaxed"
+                      components={{
+                        a: ({ node, ...props }) => (
+                          <a
+                            {...props}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-primary underline underline-offset-2 hover:opacity-80"
+                          />
+                        ),
+                        p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                        ul: ({ children }) => (
+                          <ul className="mb-2 list-disc pl-4 space-y-1">{children}</ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol className="mb-2 list-decimal pl-4 space-y-1">{children}</ol>
+                        ),
+                        li: ({ children }) => <li className="leading-snug">{children}</li>,
+                        strong: ({ children }) => (
+                          <strong className="font-semibold text-foreground dark:text-neutral-100">
+                            {children}
+                          </strong>
+                        ),
+                        code: ({ children }) => (
+                          <code className="rounded bg-black/10 dark:bg-white/10 px-1 py-0.5 font-mono text-xs">
+                            {children}
+                          </code>
+                        ),
+                      }}
+                    >
+                      {msg.text}
+                    </Markdown>
+                  ) : (
+                    <div className="flex items-center gap-1.5 py-1 text-muted-foreground">
+                      <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:-0.3s]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:-0.15s]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce" />
+                    </div>
+                  )
                 ) : (
-                  msg.text
+                  <div className="whitespace-pre-wrap break-words">{msg.text}</div>
                 )}
                 <div
                   className={`absolute bottom-[-1.25rem] whitespace-nowrap text-[10px] text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 ${
@@ -654,6 +957,26 @@ dark:from-primary/20 dark:to-accent/20 p-6 border-b border-white/20"
             </div>
           ))}
         </div>
+
+        {/* Quick Suggestion Chips */}
+        {activeMode === "text" && messages.length <= 2 && (
+          <div className="flex gap-2 overflow-x-auto px-6 py-1 scrollbar-hide">
+            {[
+              "Tell me about your AI background",
+              "What did you build for Maidway?",
+              "How can I download your resume?",
+            ].map((chip) => (
+              <button
+                key={chip}
+                type="button"
+                onClick={() => sendChatMessage(chip)}
+                className="whitespace-nowrap rounded-lg border border-primary/20 bg-white/40 dark:bg-neutral-800/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Input */}
         <div className="p-6 pt-2">

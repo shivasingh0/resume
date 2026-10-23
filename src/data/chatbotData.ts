@@ -1,18 +1,20 @@
 export const CHAT_BOT_DATA = {
-  "name": "Shiv Mangal Singh Rajawat",
-  "shortName": "Shiv",
-  "url": "https://shiv-resume.vercel.app",
-  "location": "Indore, Madhya Pradesh, India",
-  "description": "Full Stack AI Engineer",
-  "summary": "I am a Full Stack AI Engineer with 3+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. I work with REST APIs, database architecture, automation workflows, OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems.",
-  "contact": {
-    "email": "shiva2003rajawat@gmail.com",
-    "phone": "+91-7007094154",
-    "github": "https://github.com/shivasingh0",
-    "linkedin": "https://www.linkedin.com/in/shivamangal/",
-    "whatsapp": "https://api.whatsapp.com/send?phone=7007094154"
+  name: "Shiv Mangal Singh Rajawat",
+  shortName: "Shiv",
+  url: "https://shiv-resume.vercel.app",
+  resumeDownloadUrl: "/Shiv_Rajawat_AI_Resume.pdf",
+  location: "Indore, Madhya Pradesh, India",
+  description: "Full Stack AI Engineer",
+  summary:
+    "Full Stack AI Engineer with 3+ years of experience building scalable web applications, backend services, workflow automation solutions, and AI-powered business applications using Python, React.js, Next.js, Node.js, and cloud technologies. Experienced in REST API development, database architecture, automation workflows, AI assistant integrations, and production deployments. Hands-on experience with OpenAI APIs, LangChain, RAG concepts, AI agents, n8n automation, and conversational AI systems, with a strong focus on building intelligent and scalable automation solutions.",
+  contact: {
+    email: "shiva2003rajawat@gmail.com",
+    phone: "+91-7007094154",
+    github: "https://github.com/shivasingh0",
+    linkedin: "https://www.linkedin.com/in/shivamangal/",
+    whatsapp: "https://api.whatsapp.com/send?phone=7007094154",
   },
-  "skills": [
+  skills: [
     "JavaScript",
     "TypeScript",
     "Python",
@@ -38,86 +40,99 @@ export const CHAT_BOT_DATA = {
     "Redux",
     "Git",
     "GitHub",
-    "Postman"
-    ,"OpenAI API"
-    ,"Google Gemini API"
-    ,"LangChain"
-    ,"RAG"
-    ,"n8n"
-    ,"Vapi Voice AI"
+    "Postman",
+    "OpenAI API",
+    "Google Gemini API",
+    "LangChain",
+    "CrewAI",
+    "RAG",
+    "n8n",
+    "Vapi Voice AI",
   ],
-  "workExperience": [
+  workExperience: [
     {
-      "company": "Svast Healthcare Technologies",
-      "role": "Software Developer",
-      "location": "Indore, Madhya Pradesh, India",
-      "startDate": "August 2026",
-      "endDate": "Present",
-      "description": "I work as a Software Developer developing and maintaining healthcare technology solutions and Revenue Cycle Management (RCM) platforms. I build scalable web applications, robust backend services, and REST APIs to streamline medical billing, claims processing, and healthcare analytics workflows."
+      company: "Svast Healthcare Technologies",
+      role: "Software Developer",
+      location: "Indore, Madhya Pradesh, India",
+      startDate: "August 2026",
+      endDate: "Present",
+      description:
+        "Developing and maintaining healthcare technology solutions and Revenue Cycle Management (RCM) platforms. Building scalable web applications, robust backend services, and REST APIs to streamline medical billing, claims processing, and healthcare analytics workflows. Implementing workflow automation and data intelligence pipelines to improve operational efficiency, data accuracy, and user experience.",
     },
     {
-      "company": "WebiWork Technologies Pvt. Ltd.",
-      "role": "Full Stack Developer",
-      "location": "Indore, Madhya Pradesh, India",
-      "startDate": "May 2025",
-      "endDate": "August 2026",
-      "description": "I develop and maintain scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. I build REST APIs, webhooks, third-party integrations, n8n automation workflows, and AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts."
+      company: "WebiWork Technologies Pvt. Ltd.",
+      role: "Full Stack Developer",
+      location: "Indore, Madhya Pradesh, India",
+      startDate: "May 2025",
+      endDate: "August 2026",
+      description:
+        "Developed and maintained scalable full-stack applications using React.js, Next.js, Node.js, Express.js, and Python. Built optimized REST APIs, webhooks, and third-party integrations for workflow automation and business applications. Developed AI-powered proof-of-concepts using OpenAI/Gemini APIs, LangChain, and RAG concepts, and built n8n automation workflows for business systems and notifications. Experimented with AI agent workflows using LangChain and CrewAI for task orchestration and conversational AI use cases.",
     },
     {
-      "company": "Mindcoders",
-      "role": "Software Developer",
-      "location": "Indore, Madhya Pradesh, India",
-      "startDate": "October 2023",
-      "endDate": "April 2025",
-      "description": "I built and deployed 5+ production-grade applications including LMS and CRM platforms. I improved application performance and accessibility using React Profiler and Lighthouse audits, integrated REST APIs using Redux Toolkit and custom hooks, developed reusable UI components, and optimized frontend performance."
+      company: "Mindcoders",
+      role: "Software Developer",
+      location: "Indore, Madhya Pradesh, India",
+      startDate: "October 2023",
+      endDate: "April 2025",
+      description:
+        "Built and deployed 5+ production-grade applications including LMS and CRM platforms. Improved application performance and accessibility using React Profiler and Lighthouse audits. Integrated REST APIs using Redux Toolkit and custom hooks for efficient state management, developed reusable UI components, and optimized frontend performance to improve load time and user experience.",
     },
     {
-      "company": "Mindcoders",
-      "role": "Software Developer Intern",
-      "location": "Indore, Madhya Pradesh, India",
-      "startDate": "July 2023",
-      "endDate": "September 2023",
-      "description": "I contributed to production-grade React.js applications, assisted with performance optimization and debugging, and gained hands-on experience in full-stack development and agile workflows."
-    }
+      company: "Mindcoders",
+      role: "Software Developer Intern",
+      location: "Indore, Madhya Pradesh, India",
+      startDate: "July 2023",
+      endDate: "September 2023",
+      description:
+        "Contributed to the development of production-grade React.js applications and assisted with performance optimization and debugging using modern development tools. Gained hands-on experience in full-stack development and agile workflows.",
+    },
   ],
-  "education": [
+  education: [
     {
-      "institution": "RGPV University",
-      "degree": "Bachelor of Technology",
-      "startYear": "2019",
-      "endYear": "2023"
-    }
+      institution: "Acropolis Institute of Technology and Research",
+      affiliation: "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)",
+      degree: "Bachelor of Technology",
+      location: "Indore, Madhya Pradesh, India",
+      startYear: "2019",
+      endYear: "2023",
+    },
   ],
-  "projects": [
+  projects: [
     {
-      "name": "Maidway",
-      "description": "I integrated AI-powered voice agents using Vapi to automate customer interactions, appointment scheduling, and booking workflows. I developed conversational AI workflows, Twilio and SendGrid automation pipelines, intelligent recurring booking workflows, and analytics dashboards.",
-      "techStack": [
-        "React",
-        "Vite",
-        "Tailwind CSS",
+      name: "Maidway",
+      description:
+        "Integrated AI-powered voice agents using Vapi to automate customer interactions, appointment scheduling, and booking workflows. Developed conversational AI workflows for customer support, appointment reminders, and service inquiries. Built automation pipelines using Twilio and SendGrid, implemented intelligent scheduling and recurring booking workflows, and developed analytics dashboards for business insights and performance monitoring.",
+      techStack: [
+        "Replit",
+        "React + Vite",
+        "TailwindCSS",
         "PostgreSQL",
+        "Express.js",
         "Node.js",
-        "Express.js"
-      ]
+        "Vapi",
+      ],
+      liveUrl: "https://maidway.com/",
     },
     {
-      "name": "AI Knowledge Assistant",
-      "description": "An AI-powered document intelligence platform for semantic search and contextual question-answering across uploaded documents. It uses RAG workflows, LangChain, OpenAI APIs, Pinecone vector search, FastAPI services, and Dockerized deployment.",
-      "techStack": [
+      name: "AI Knowledge Assistant",
+      description:
+        "Developed an AI-powered document intelligence platform enabling semantic search and contextual question-answering across uploaded documents. Implemented RAG workflows using LangChain, OpenAI APIs, and vector embeddings, integrated Pinecone for document indexing and retrieval, built FastAPI services for ingestion and response generation, and Dockerized the application for scalable deployment.",
+      techStack: [
         "Python",
         "FastAPI",
         "OpenAI API",
         "LangChain",
         "Pinecone",
         "React.js",
-        "Docker"
-      ]
+        "Docker",
+      ],
+      liveUrl: null,
     },
     {
-      "name": "AimQTest",
-      "description": "An AI-powered career guidance platform providing personalized recommendations from student assessments, with REST APIs, counselling workflows, WebSockets, JWT authentication, role-based access control, and Dockerized services.",
-      "techStack": [
+      name: "AimQTest",
+      description:
+        "Built an AI-powered career guidance platform enabling personalized career recommendations based on student assessments. Developed REST APIs and backend services for assessments, report generation, and counselling workflows, implemented real-time counselling with WebSockets, and secured the platform with JWT authentication and role-based access control.",
+      techStack: [
         "Python",
         "React.js",
         "Node.js",
@@ -125,59 +140,134 @@ export const CHAT_BOT_DATA = {
         "MongoDB",
         "WebSockets",
         "JWT",
-        "Docker"
-      ]
+        "Docker",
+      ],
+      liveUrl: null,
     },
     {
-      "name": "QReady",
-      "description": "A QR-enabled digital platform that replaces manual tracking with automated asset and room management, enabling real-time logging and reporting.",
-      "techStack": [
+      name: "QReady",
+      description:
+        "Worked on a digital QR-enabled platform that replaces manual clipboard tracking with automated asset/room management for fire, hospitality, and facility departments. Reduced operational inefficiencies by enabling fast QR scans, real-time logging, and accurate reporting across industries.",
+      techStack: [
         "Next.js",
         "Bootstrap",
         "Node.js",
         "Express.js",
         "MongoDB",
         "Docker",
-        "AWS"
-      ]
-    },
-    {
-      "name": "Dental CRM",
-      "description": "A CRM solution designed to streamline patient management for dental clinics, improving operational efficiency and patient care.",
-      "techStack": [
-        "React",
-        "Redux",
-        "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "MongoDB"
-      ]
-    },
-    {
-      "name": "E-Auction",
-      "description": "A real-time auction and bidding platform with dashboards for Admin, Client, and Bidder, featuring live bid updates and automated auction management.",
-      "techStack": [
-        "React",
-        "Redux",
-        "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Socket.IO"
+        "AWS",
       ],
+      liveUrl: "https://myqready.com/",
     },
     {
-      "name": "Learning Management System",
-      "description": "A comprehensive LMS platform for online education with course management, payments, and student tracking.",
-      "techStack": [
-        "React",
+      name: "Dental CRM",
+      description:
+        "Dental CRM is a user-friendly software designed to streamline patient management for dental practices, enhancing patient care and operational efficiency.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+        "Redux",
+        "MongoDB",
+        "Express.js",
+        "Node.js",
+      ],
+      liveUrl: "https://panel.shribalajilaserdentalclinic.com",
+    },
+    {
+      name: "E-Auction",
+      description:
+        "A real-time bidding web application that delivers instant bid updates and automated auction management. The platform supports dedicated dashboards for Admin, Client, and Bidders, ensuring secure and transparent bidding experiences.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+        "Redux",
+        "MongoDB",
+        "Express.js",
+        "Node.js",
+        "Hostinger (VPS)",
+        "Socket.IO",
+        "Node-Cron",
+      ],
+      liveUrl: "https://e-lite.co.in/",
+    },
+    {
+      name: "e-Learning Management System",
+      description:
+        "LMS (Learning Management System) Portal is a comprehensive, user-friendly e-learning platform to enhance online education and training experiences with course management, payments, and student tracking.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
         "Redux Toolkit",
-        "Tailwind CSS",
         "Node.js",
         "Express.js",
         "MongoDB",
-        "Razorpay"
-      ]
+        "RazorPay",
+      ],
+      liveUrl: "https://learning.mindcoders.in/",
     },
-  ]
-}
+    {
+      name: "Hello Educators",
+      description:
+        "Hello Educators is a leading digital educational platform that offers the best-quality lectures at home from India's best teachers, lecturers, professors, experienced professional educators, and relevant postgraduates.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+        "Redux",
+        "MySQL",
+        "Node.js",
+        "Express.js",
+      ],
+      liveUrl: "https://www.helloeducators.in/",
+    },
+    {
+      name: "Mindcoders",
+      description:
+        "Mind Coders is a One Stop for all IT Training Needs! They provide the best training with industry expert trainers.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+        "Magic UI",
+        "Next.js",
+        "RazorPay",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+      ],
+      liveUrl: "https://mindcoders.in",
+    },
+    {
+      name: "Muhurat Investing",
+      description:
+        "Muhurat Investing Investment Advisor - Your Trusted Partner in Financial Success.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+      ],
+      liveUrl: "https://www.muhuratinvesting.com/",
+    },
+    {
+      name: "Mindbulls",
+      description:
+        "Developed and delivered comprehensive financial trading education at Mindbulls Trading Institute, empowering individuals to earn high incomes by investing in the stock market since 2020.",
+      techStack: [
+        "React.js",
+        "TailwindCSS",
+      ],
+      liveUrl: "https://mindbulls.vercel.app/",
+    },
+    {
+      name: "Fourpoints Holidays",
+      description:
+        "Fourpoints Holidays is a professionally managed travel services company offering hotel booking services, car and coach rentals in all three divisions of the state of Jammu and Kashmir.",
+      techStack: [
+        "HTML/CSS",
+        "Bootstrap",
+        "Php",
+      ],
+      liveUrl: "https://fourpointsholidays.in/",
+    },
+  ],
+};
