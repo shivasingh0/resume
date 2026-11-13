@@ -6,6 +6,7 @@ import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
+import Markdown from "react-markdown";
 import Link from "next/link";
 import React from "react";
 
@@ -100,7 +101,9 @@ export const ResumeCard = ({
               }}
               className="mt-2 text-xs sm:text-sm"
             >
-              {description}
+              <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert prose-ul:my-1 prose-ul:list-disc prose-ul:pl-4 prose-li:my-0.5">
+                {description}
+              </Markdown>
             </motion.div>
           )}
         </div>

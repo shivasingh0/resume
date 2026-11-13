@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Markdown from "react-markdown";
 import React from "react";
 
 interface TimelineItemProps {
@@ -168,7 +169,9 @@ export const TimelineItem = ({
                   viewport={{ once: true }}
                   className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/50"
                 >
-                  {description}
+                  <Markdown className="prose max-w-full text-pretty font-sans text-xs sm:text-sm text-muted-foreground dark:prose-invert prose-ul:my-1 prose-ul:list-disc prose-ul:pl-4 prose-li:my-1">
+                    {description}
+                  </Markdown>
                 </motion.div>
               )}
             </CardHeader>
